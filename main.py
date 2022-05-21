@@ -51,3 +51,5 @@ page, url = requestAndParse(url)
 # get films from upcoming
 page.find_all('li', class_="listpost")[1]
 
+#follow this
+# #https://www.dataquest.io/blog/web-scraping-python-using-beautiful-soup/
