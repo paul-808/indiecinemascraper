@@ -10,6 +10,7 @@
 from urllib.request import urlopen, Request
 from urllib.parse import urlparse
 from bs4 import BeautifulSoup4 as soup
+import pandas as pd
 
 
 # set target
