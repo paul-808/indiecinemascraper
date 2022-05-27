@@ -5,7 +5,7 @@
 - get additional cinemas listed. 
 - write tidy script to dump old values from the listing
 - write read-to and write-to master csv dataset
-
+- add some kind of logging
 
 Cinemas completed so far:
 - Cinesphere

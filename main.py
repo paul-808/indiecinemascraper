@@ -1,6 +1,7 @@
 #####
 ## Indie Cinema Scraper
-# v1.0
+# v1.1
+# May 27 2022
 # Paul Jarvey
 ######
 
@@ -12,12 +13,16 @@ from bs4 import BeautifulSoup as soup
 import pandas as pd
 import re
 from datetime import datetime
+from pathlib import Path
 
-# setup data frame
-## RUNONCE
-listings = pd.DataFrame(columns=['timestamp','cinema','mTitle','mTime','mURL','mPosterURL'])
+# Load data or init if none exists
 
-# list var order: datetime, cinema, mTitle, mTime, mURL, mPosterUrl
+if not Path('listings.csv').is_file():
+    listings = pd.DataFrame(columns=['timestamp','cinema','mTitle','mTime','mURL','mPosterURL'])
+    print("Historical data not found, initiating new...")
+else:
+    listings = pd.read_csv('listings.csv')
+    print("Restoring from CSV...")
 
 # set target
 url = "https://ontarioplace.com/en/cinesphere/"
