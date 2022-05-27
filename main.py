@@ -1,17 +1,21 @@
 #####
-#
-# Indie Cinema Scraper
+## Indie Cinema Scraper
 # v1.0
 # Paul Jarvey
-#
-#####
+######
 
 # load libraries
 from urllib.request import urlopen, Request
 from urllib.parse import urlparse
-from bs4 import BeautifulSoup4 as soup
+from bs4 import BeautifulSoup as soup
 import pandas as pd
 
+# setup data frame
+## RUNONCE
+listings = []
+
+# datetime, Cinema index, Movie title, movie date, movie time, listing URL, movie poster url
+# datetime, cinema, mTitle, mDate, mTime, mURL, mPosterUrl
 
 # set target
 url = "https://ontarioplace.com/en/cinesphere/"
@@ -49,7 +53,25 @@ def requestAndParse(requested_url):
 page, url = requestAndParse(url)
 
 # get films from upcoming
-page.find_all('li', class_="listpost")[1]
+temp = page.find_all('li', class_="filmBox")
+
+#for each element in temp...
+listing = []
+listing.append(pd.to_datetime("today"))
+
+listing.append("Cinesphere")
+
+mtitle = temp[0].select('div a')[0].attrs['title']
+listing.append(mtitle)
+
+#works up to here
+
+tempdate = temp[0].select('li.btn')
+
+tempdate[0].getText
+
+
+# list var order: datetime, cinema, mTitle, mDate, mTime, mURL, mPosterUrl
 
 #follow this
 # #https://www.dataquest.io/blog/web-scraping-python-using-beautiful-soup/
