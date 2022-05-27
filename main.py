@@ -5,6 +5,7 @@
 ######
 
 # load libraries
+import csv
 from urllib.request import urlopen, Request
 from urllib.parse import urlparse
 from bs4 import BeautifulSoup as soup
@@ -92,4 +93,5 @@ for x in range(nrawFilms):
         #append listing to listings dataframe
         listings.loc[len(listings)] = listing
 
+listings.to_csv('listings.csv', index=False)
 
