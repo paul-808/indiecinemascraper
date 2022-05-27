@@ -9,13 +9,14 @@ from urllib.request import urlopen, Request
 from urllib.parse import urlparse
 from bs4 import BeautifulSoup as soup
 import pandas as pd
+import re
+from datetime import datetime
 
 # setup data frame
 ## RUNONCE
-listings = []
+listings = pd.DataFrame(columns=['timestamp','cinema','mTitle','mTime','mURL','mPosterURL'])
 
-# datetime, Cinema index, Movie title, movie date, movie time, listing URL, movie poster url
-# datetime, cinema, mTitle, mDate, mTime, mURL, mPosterUrl
+# list var order: datetime, cinema, mTitle, mTime, mURL, mPosterUrl
 
 # set target
 url = "https://ontarioplace.com/en/cinesphere/"
@@ -53,25 +54,42 @@ def requestAndParse(requested_url):
 page, url = requestAndParse(url)
 
 # get films from upcoming
-temp = page.find_all('li', class_="filmBox")
+rawFilms = page.find_all('li', class_="filmBox")
+nrawFilms = len(rawFilms)
 
-#for each element in temp...
-listing = []
-listing.append(pd.to_datetime("today"))
+for x in range(nrawFilms):
 
-listing.append("Cinesphere")
+    #check if multiple times
+    mTimes = rawFilms[x].find_all('li', class_='btn')
+    nmTimes = len(mTimes)
 
-mtitle = temp[0].select('div a')[0].attrs['title']
-listing.append(mtitle)
+    # per-film collection loop
+    for i in range(nmTimes):
+        #for each element in temp...
+        listing = []
+        listing.append(pd.to_datetime("today"))
+        listing.append("Cinesphere")
+        mTitle = rawFilms[x].select('div a')[0].attrs['title']
+        listing.append(mTitle)
+        print(mTitle)
 
-#works up to here
+        # regex and construct time object
+        mMonth = re.search("(?i)Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec", mTimes[i].text).group()
+        mDay = re.search(".\d(?=,)", mTimes[i].text).group().strip()
+        mYear = re.search("2\d{3}", mTimes[i].text).group()
+        mHour = re.search(".\d(?=:\d\d)", mTimes[i].text).group().strip()
+        mMin = re.search("(?<=\d:)\d\d", mTimes[i].text).group()
+        mAMPM = re.search("(?i)(?<=\d:\d\d )(AM|PM)", mTimes[i].text).group()
+        mTime = datetime.strptime(mYear + ' ' + mMonth + ' ' + mDay + ' ' + mHour + ' ' + mMin + ' ' + mAMPM, '%Y %b %d %I %M %p')
+        listing.append(mTime)
 
-tempdate = temp[0].select('li.btn')
+        mURL = rawFilms[x].select('a')[0].attrs['href']
+        listing.append(mURL)
 
-tempdate[0].getText
+        mPoster = rawFilms[x].select('img')[0].attrs['src']
+        listing.append(mPoster)
+
+        #append listing to listings dataframe
+        listings.loc[len(listings)] = listing
 
 
-# list var order: datetime, cinema, mTitle, mDate, mTime, mURL, mPosterUrl
-
-#follow this
-# #https://www.dataquest.io/blog/web-scraping-python-using-beautiful-soup/
