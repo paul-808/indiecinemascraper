@@ -14,9 +14,15 @@ import pandas as pd
 import re
 from datetime import datetime
 from pathlib import Path
+from time import sleep
+
+# gear up selenium w/ firefox
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.keys import Keys
+
 
 # Load data or init if none exists
-
 if not Path('listings.csv').is_file():
     listings = pd.DataFrame(columns=['timestamp','cinema','mTitle','mTime','mURL','mPosterURL'])
     print("Historical data not found, initiating new...")
@@ -24,8 +30,9 @@ else:
     listings = pd.read_csv('listings.csv')
     print("Restoring from CSV...")
 
-# set target
-url = "https://ontarioplace.com/en/cinesphere/"
+cinemas = pd.read_csv('cinemas.csv')
+
+
 
 # format URLS
 def checkURL(requested_url):
@@ -56,7 +63,12 @@ def requestAndParse(requested_url):
     except Exception as e:
         print(e)
 
+
+########### SCRAPERS ###########
+########### Scraper 1: Cinesphere
+
 # run the request
+url = cinemas["listingURL"][0]
 page, url = requestAndParse(url)
 
 # get films from upcoming
@@ -74,7 +86,7 @@ for x in range(nrawFilms):
         #for each element in temp...
         listing = []
         listing.append(pd.to_datetime("today"))
-        listing.append("Cinesphere")
+        listing.append(cinemas["name"][0])
         mTitle = rawFilms[x].select('div a')[0].attrs['title']
         listing.append(mTitle)
         print(mTitle)
@@ -100,3 +112,25 @@ for x in range(nrawFilms):
 
 listings.to_csv('listings.csv', index=False)
 
+
+########### Scraper 2: Tiff Bell Lightbox
+
+url = cinemas["listingURL"][1]
+
+#Need javascript for this one, get webdriver and firefox spooled up:
+browser = webdriver.Firefox()
+browser.set_window_size(900,900)
+browser.set_window_position(0,0)
+browser.get(url)
+
+#pass page source to beautiful soup
+pageSource = browser.page_source
+page = soup(pageSource)
+
+#end session since it's not needed
+browser.quit()
+
+# get films from upcoming
+rawFilmDays = page.find_all('h2', {'class':re.compile('style__date__.*')})
+rawFilms = page.find_all('li', class_="filmBox")
+nrawFilms = len(rawFilms)

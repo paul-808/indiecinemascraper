@@ -9,7 +9,8 @@
 
 Cinemas completed so far:
 - Cinesphere
-
+- Tiff Bell Lightbox (incomplete)
+ 
 Cinemas to do:
 - Cineplex YD
 - Scotiabank
@@ -17,7 +18,7 @@ Cinemas to do:
 - cineplex yonge-eg
 - cineplex beaches
 - cineplex store
-- Tiff Bell Lightbox
+
 - Tiff Digital Cinema
 - Hot Docs
 - Hot Docs at Home
