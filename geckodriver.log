@@ -121,3 +121,37 @@ JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 718: Error: Pha
 ###!!! [Parent][PImageBridgeParent] Error: RunMessage(msgname=PImageBridge::Msg_WillClose) Channel closing: too late to send/recv, messages will be lost
 
 Sandbox: Unexpected EOF, op 0 flags 00 path /proc/cpuinfo
+1653866464401	geckodriver	INFO	Listening on 127.0.0.1:35971
+1653866464961	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "53091" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileBODSEb"
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1653866465661	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileBODSEb/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:53091/devtools/browser/db77bc82-ab27-43ae-bd48-4ce020e9c22a
+1653866468011	Marionette	INFO	Listening on port 37399
+Read port: 37399
+1653866468097	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://www.tiff.net/popper.js, line 1: SyntaxError: expected expression, got '<'
+1653866523659	Marionette	INFO	Stopped listening on port 37399
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+JavaScript error: chrome://remote/content/marionette/cert.js, line 55: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+1653868755439	geckodriver	INFO	Listening on 127.0.0.1:34557
+1653868756182	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "42379" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofile2wkrJI"
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1653868757418	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile2wkrJI/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:42379/devtools/browser/192d04a0-92f8-469f-961e-2abd789021fc
+1653868759963	Marionette	INFO	Listening on port 35577
+Read port: 35577
+1653868760064	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://www.tiff.net/popper.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://www.tiff.net/popper.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript warning: https://pagead2.googlesyndication.com/bg/b_DSvT5BjDf3L7mXasT585du80JYgOthzDrRF7aJqH4.js line 2 > eval line 5506 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/b_DSvT5BjDf3L7mXasT585du80JYgOthzDrRF7aJqH4.js line 2 > eval line 5753 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://www.tiff.net/popper.js, line 1: SyntaxError: expected expression, got '<'
+1653868943422	Marionette	INFO	Stopped listening on port 35577

@@ -64,7 +64,8 @@ def requestAndParse(requested_url):
         print(e)
 
 
-########### SCRAPERS ###########
+
+
 ########### Scraper 1: Cinesphere
 
 # run the request
@@ -131,6 +132,45 @@ page = soup(pageSource)
 browser.quit()
 
 # get films from upcoming
-rawFilmDays = page.find_all('h2', {'class':re.compile('style__date__.*')})
-rawFilms = page.find_all('li', class_="filmBox")
-nrawFilms = len(rawFilms)
+rawResults = page.find('div', {'class':re.compile('style__results_.*')})
+rawFilmDays = rawResults.find_all('span', string=re.compile('.*(Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday).*'))
+
+#TODO: iterate through all days
+rawFilmDay = rawFilmDays[0].find_parent()
+rawFilmDate = rawFilmDay.find_all('h2')
+
+
+listing = []
+listing.append(pd.to_datetime("today"))
+listing.append(cinemas["name"][1])
+mYear =
+mMonth = re.search("(?i)January|February|March|April|May|June|July|August|September|October|November|December", rawFilmDate[0].text).group().strip()
+mDay = re.search("\d{1,2}", rawFilmDate[0].text).group().strip()
+
+# this day this year occurs on:
+mDateTest = datetime.strptime(str(datetime.now().year) + ' ' + mMonth + ' ' + mDay, '%Y %B %d')
+# is it in the future...
+delta = datetime.now() - mDateTest
+if delta.days < 0:
+    mYear = str(datetime.now().year +1)
+else:
+    mYear = str(datetime.now().year)
+
+
+######################### WORKS UP TO HERE, scratch below
+        listing.append(mTitle)
+        print(mTitle)
+
+        # regex and construct time object
+                mHour = re.search(".\d(?=:\d\d)", mTimes[i].text).group().strip()
+        mMin = re.search("(?<=\d:)\d\d", mTimes[i].text).group()
+        mAMPM = re.search("(?i)(?<=\d:\d\d )(AM|PM)", mTimes[i].text).group()
+        mTime = datetime.strptime(mYear + ' ' + mMonth + ' ' + mDay + ' ' + mHour + ' ' + mMin + ' ' + mAMPM, '%Y %b %d %I %M %p')
+
+        listing.append(mTime)
+
+        mURL = rawFilms[x].select('a')[0].attrs['href']
+        listing.append(mURL)
+
+        mPoster = rawFilms[x].select('img')[0].attrs['src']
+        listing.append(mPoster)
