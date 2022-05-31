@@ -155,3 +155,44 @@ JavaScript warning: https://pagead2.googlesyndication.com/bg/b_DSvT5BjDf3L7mXasT
 JavaScript warning: https://pagead2.googlesyndication.com/bg/b_DSvT5BjDf3L7mXasT585du80JYgOthzDrRF7aJqH4.js line 2 > eval line 5753 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
 JavaScript error: https://www.tiff.net/popper.js, line 1: SyntaxError: expected expression, got '<'
 1653868943422	Marionette	INFO	Stopped listening on port 35577
+1653911633168	geckodriver	INFO	Listening on 127.0.0.1:38909
+1653911633925	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "53573" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileiCVUME"
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1653911635063	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileiCVUME/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:53573/devtools/browser/65c1e103-4c4e-438e-93e5-6f1a3be39ff0
+1653911637819	Marionette	INFO	Listening on port 33389
+Read port: 33389
+1653911637894	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://www.tiff.net/popper.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript warning: https://pagead2.googlesyndication.com/bg/BlV8lHKGnk03wUyhHWlg9fV4CiK26Crs8dLo7bQbDuA.js line 2 > eval line 825 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1653911695897	Marionette	INFO	Stopped listening on port 33389
+
+###!!! [Parent][PImageBridgeParent] Error: RunMessage(msgname=PImageBridge::Msg_WillClose) Channel closing: too late to send/recv, messages will be lost
+
+Sandbox: Unexpected EOF, op 0 flags 00 path /proc/cpuinfo
+1653967194098	geckodriver	INFO	Listening on 127.0.0.1:54213
+1653967194659	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "56781" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileY2eyFy"
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1653967195673	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileY2eyFy/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:56781/devtools/browser/e77f2300-f9b5-4571-9d7c-60292802172a
+1653967198568	Marionette	INFO	Listening on port 40459
+Read port: 40459
+1653967198653	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://www.tiff.net/popper.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript warning: https://pagead2.googlesyndication.com/bg/BlV8lHKGnk03wUyhHWlg9fV4CiK26Crs8dLo7bQbDuA.js line 2 > eval line 6867 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1653967628603	Marionette	INFO	Stopped listening on port 40459
+
+###!!! [Parent][PContentParent] Error: Send(msgname=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 718: Error: Phase "Sqlite.jsm: wait until all connections are closed" is finished, it is too late to register completion condition "protections.sqlite#0: waiting for shutdown"
+
+###!!! [Parent][PImageBridgeParent] Error: RunMessage(msgname=PImageBridge::Msg_WillClose) Channel closing: too late to send/recv, messages will be lost
+

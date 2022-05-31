@@ -125,8 +125,7 @@ browser.set_window_position(0,0)
 browser.get(url)
 
 #pass page source to beautiful soup
-pageSource = browser.page_source
-page = soup(pageSource)
+page = soup(browser.page_source)
 
 #end session since it's not needed
 browser.quit()
@@ -135,42 +134,46 @@ browser.quit()
 rawResults = page.find('div', {'class':re.compile('style__results_.*')})
 rawFilmDays = rawResults.find_all('span', string=re.compile('.*(Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday).*'))
 
-#TODO: iterate through all days
+#TODO: iterate through all DAYS
 rawFilmDay = rawFilmDays[0].find_parent()
 rawFilmDate = rawFilmDay.find_all('h2')
-
 
 listing = []
 listing.append(pd.to_datetime("today"))
 listing.append(cinemas["name"][1])
-mYear =
 mMonth = re.search("(?i)January|February|March|April|May|June|July|August|September|October|November|December", rawFilmDate[0].text).group().strip()
 mDay = re.search("\d{1,2}", rawFilmDate[0].text).group().strip()
 
-# this day this year occurs on:
+# this day, if in this year, occurs on:
 mDateTest = datetime.strptime(str(datetime.now().year) + ' ' + mMonth + ' ' + mDay, '%Y %B %d')
-# is it in the future...
-delta = datetime.now() - mDateTest
-if delta.days < 0:
+# is it more than 30 days in the past?
+delta =  mDateTest - datetime.now()
+# if so, keep current year, if in past, increment by one
+if delta.days < -30:
     mYear = str(datetime.now().year +1)
 else:
     mYear = str(datetime.now().year)
 
+# get films from upcoming
+rawFilms = rawFilmDay.find_all('div', {'class': re.compile("style__resultCard.*")})
+#TODO: iterate through all FILMS
+mTitle = rawFilms[0].find('span').text
+mURL = 'https://www.tiff.net/calendar' + rawFilms[0].select('a')[0].attrs['href']
+mPoster = rawFilms[0].find('div', {'class':re.compile("style__cardImg.*")})['style']
+mPoster = re.search('(?<=").*(?=(\?|"))',mPoster).group()
 
-######################### WORKS UP TO HERE, scratch below
-        listing.append(mTitle)
-        print(mTitle)
+#TODO: iterate through all TIMES
+mTimes = rawFilms[0].find_all('div',{'class':re.compile("style__screeningButton.*")})
+mHour = re.search("\d+(?=:)", mTimes[0].text).group()
+mMin =  re.search("(?<=:)\d+", mTimes[0].text).group()
+mAMPM = re.search("(?i)(?<=\d:\d\d)(AM|PM)", mTimes[0].text).group().upper()
+mTime = datetime.strptime(mYear + ' ' + mMonth + ' ' + mDay + ' ' + mHour + ' ' + mMin + ' ' + mAMPM, '%Y %b %d %I %M %p')
 
-        # regex and construct time object
-                mHour = re.search(".\d(?=:\d\d)", mTimes[i].text).group().strip()
-        mMin = re.search("(?<=\d:)\d\d", mTimes[i].text).group()
-        mAMPM = re.search("(?i)(?<=\d:\d\d )(AM|PM)", mTimes[i].text).group()
-        mTime = datetime.strptime(mYear + ' ' + mMonth + ' ' + mDay + ' ' + mHour + ' ' + mMin + ' ' + mAMPM, '%Y %b %d %I %M %p')
-
-        listing.append(mTime)
-
-        mURL = rawFilms[x].select('a')[0].attrs['href']
-        listing.append(mURL)
-
-        mPoster = rawFilms[x].select('img')[0].attrs['src']
-        listing.append(mPoster)
+#append all to the list
+listing.append(mTitle)
+print(mTitle)
+listing.append(mTime)
+listing.append(mURL)
+listing.append(mPoster)
+# append listing to listings dataframe
+listings.loc[len(listings)] = listing
