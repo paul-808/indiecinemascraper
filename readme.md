@@ -9,7 +9,8 @@
 
 Cinemas completed so far:
 - Cinesphere
-- Tiff Bell Lightbox (incomplete)
+- Tiff Bell Lightbox
+- cineplexes (in progress)
  
 Cinemas to do:
 - Cineplex YD
