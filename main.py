@@ -179,7 +179,13 @@ for d in range(nrawFilmDays):
 
 listings.to_csv('listings.csv', index=False)
 
+
+
 ########### Scraper 3: cineplex
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver import ActionChains
+from selenium.webdriver.common.by import By
+import pyautogui
 
 #url = cinemas["listingURL"][1]
 url = 'https://www.cineplex.com/Theatre/cineplex-cinemas-yongedundas-and-vip'
@@ -187,10 +193,50 @@ print('attempting ' + url)
 
 #Need javascript for this one, get webdriver and firefox spooled up:
 browser = webdriver.Firefox()
+action = ActionChains(browser)
 browser.set_window_size(900,900)
 browser.set_window_position(0,0)
 browser.get(url)
 page = soup(browser.page_source)
-page.find('select', attrs={'id': 'theatre-date-dropdown'}).find('option')['selected'] = ''
-rawFilmDays = page.select('select#theatre-date-dropdown option')[0]['selected'] = ''
+
+#select the menu, and change selected by simulating keypresses
+search = browser.find_element(By.ID, 'theatre-date-dropdown')
+search.send_keys(Keys.ARROW_DOWN)
+
+for rawFilmDay in page.select('select#theatre-date-dropdown option'):
+    print(rawFilmDay)
+    mYear = re.search("\d{4}", rawFilmDay.text).group()
+    mMonth = re.search("(?i)Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec", rawFilmDay.text).group()
+    mDay = re.search(" \d{2} ", rawFilmDay.text).group().strip()
+    print(mYear + mMonth + mDay)
+
+    #get updated page
+    page = soup(browser.page_source)
+    rawFilms = page.select('div.movie-showtimes-section')
+    nrawFilms = len(rawFilms)
+
+    #todo: iterate through each rawfilm
+    mTitle = rawFilms[0].select('div.theatre-movie-title')[0].text
+
+    #select each time
+    for mTimes in rawFilms.find_all('a', {'class':'showtime'}):
+        mMin = re.search("(?<=:)\d+", mTimes.text).group()
+        mHour = re.search("\d+(?=:)", mTimes.text).group()
+        mAMPM = re.search("(?i)(AM|PM)", mTimes.text).group().upper()
+
+        print(mHour + mMin + mAMPM)
+
+
+
+
+    #collect movie data
+    #move to next day
+    search = browser.find_element(By.ID, 'theatre-date-dropdown')
+    search.send_keys(Keys.ARROW_DOWN)
+
+
+
+
 browser.quit()
+
+
