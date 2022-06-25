@@ -5,6 +5,9 @@
 # Paul Jarvey
 ######
 
+# temp stuff for building the new structure
+
+
 # load libraries
 from urllib.request import urlopen, Request
 from urllib.parse import urlparse
@@ -20,6 +23,13 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
+#NOTE: put geckodriver in vEnv path (type $PATH in terminal to get location)
+
+from selenium.webdriver.firefox.options import Options
+options = Options()
+options.binary_location = "/usr/bin"
+browser = webdriver.Firefox()
+
 
 # Load data or init if none exists
 if not Path('listings.csv').is_file():
@@ -181,62 +191,5 @@ for d in range(nrawFilmDays):
 
 listings.to_csv('listings.csv', index=False)
 
-
-########### Scraper 3: cineplex
-
-url = cinemas["listingURL"][2]
-print('attempting ' + url)
-
-# Need javascript for this one, get webdriver and firefox spooled up:
-browser = webdriver.Firefox()
-action = ActionChains(browser)
-browser.set_window_size(900, 900)
-browser.set_window_position(0, 0)
-browser.get(url)
-page = Soup(browser.page_source, features="html.parser")
-
-for rawFilmDay in page.select('select#theatre-date-dropdown option'):
-    mYear = re.search(r"\d{4}", rawFilmDay.text).group()
-    mMonth = re.search(r"(?i)Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec", rawFilmDay.text).group()
-    mDay = re.search(r" \d{2} ", rawFilmDay.text).group().strip()
-    mURL = url
-    print(mYear + mMonth + mDay)
-
-    # get updated page
-    rawFilms = page.select('div.movie-showtimes-section')
-    nrawFilms = len(rawFilms)
-
-    for i in range(nrawFilms):
-        mTitle = rawFilms[i].select('div.theatre-movie-title')[0].text
-        print(rawFilms[i].select('picture img.img-responsive')[0])
-        mPoster = rawFilms[i].select('picture img.img-responsive')[0].attrs['data-src']
-
-        # select each time
-        for mTimes in rawFilms[i].find_all('a', {'class': 'showtime'}):
-            mMin = re.search(r"(?<=:)\d+", mTimes.text).group()
-            mHour = re.search(r"\d+(?=:)", mTimes.text).group()
-            mAMPM = re.search(r"(?i)(AM|PM)", mTimes.text).group().upper()
-            mTime = datetime.strptime(mYear + ' ' + mMonth + ' ' + mDay + ' ' + mHour + ' ' + mMin + ' ' + mAMPM, '%Y %b %d %I %M %p')
-            print(mTime, mTitle)
-
-            # append all to the list
-            listing = []
-            listing.append(pd.to_datetime("today"))
-            listing.append(cinemas["name"][2])
-            listing.append(mTitle)
-            listing.append(mTime)
-            listing.append(mURL)
-            listing.append(mPoster)
-            # append listing to listings dataframe
-            listings.loc[len(listings)] = listing
-
-    # move to next day
-    search = browser.find_element(By.ID, 'theatre-date-dropdown')
-    search.send_keys(Keys.ARROW_DOWN)
-    print("and the next day...")
-    time.sleep(5)
-    page = Soup(browser.page_source, features="html.parser")
-
-browser.quit()
 
 

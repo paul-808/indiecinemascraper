@@ -2,6 +2,8 @@
 
 ## status
 
+- refactor code into main < scrapters format (cineplex done)
+- Rewrite tiff using JSON not selenium
 - get additional cinemas listed. 
 - write tidy script to dump old values from the listing
 - write read-to and write-to master csv dataset
@@ -10,7 +12,7 @@
 Cinemas completed so far:
 - Cinesphere
 - Tiff Bell Lightbox
-- cineplexes (in progress)
+- cineplexes (template script done)
  
 Cinemas to do:
 - Cineplex YD

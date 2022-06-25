@@ -1182,3 +1182,120 @@ JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch res
 
 ###!!! [Parent][PContentParent] Error: Send(msgname=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
 
+1655086362966	geckodriver	INFO	Listening on 127.0.0.1:39151
+1655086919921	geckodriver	INFO	Listening on 127.0.0.1:51481
+1655086927892	geckodriver	INFO	Listening on 127.0.0.1:48399
+1655087015342	geckodriver	INFO	Listening on 127.0.0.1:49353
+1655087561117	geckodriver	INFO	Listening on 127.0.0.1:44509
+1655088160509	geckodriver	INFO	Listening on 127.0.0.1:40141
+1655088404385	geckodriver	INFO	Listening on 127.0.0.1:50001
+1655088691364	geckodriver	INFO	Listening on 127.0.0.1:33189
+1655088842567	geckodriver	INFO	Listening on 127.0.0.1:34009
+1655088854055	geckodriver	INFO	Listening on 127.0.0.1:59401
+1655089006063	geckodriver	INFO	Listening on 127.0.0.1:57057
+1655089302728	geckodriver	INFO	Listening on 127.0.0.1:42205
+1655089341832	geckodriver	INFO	Listening on 127.0.0.1:35713
+1655089350169	geckodriver	INFO	Listening on 127.0.0.1:60833
+1655089399709	geckodriver	INFO	Listening on 127.0.0.1:44299
+1655089409271	geckodriver	INFO	Listening on 127.0.0.1:41613
+1655137101452	geckodriver	INFO	Listening on 127.0.0.1:36037
+1655137390570	geckodriver	INFO	Listening on 127.0.0.1:42329
+1655137598215	geckodriver	INFO	Listening on 127.0.0.1:40235
+1655137604811	geckodriver	INFO	Listening on 127.0.0.1:48369
+1655137634911	geckodriver	INFO	Listening on 127.0.0.1:36513
+1655137682158	geckodriver	INFO	Listening on 127.0.0.1:49031
+1655137688640	geckodriver	INFO	Listening on 127.0.0.1:58867
+1655137702716	geckodriver	INFO	Listening on 127.0.0.1:45253
+1655137716733	geckodriver	INFO	Listening on 127.0.0.1:36429
+1655137863240	geckodriver	INFO	Listening on 127.0.0.1:55565
+1655137868277	geckodriver	INFO	Listening on 127.0.0.1:54401
+1655137872819	geckodriver	INFO	Listening on 127.0.0.1:44453
+1655137881089	geckodriver	INFO	Listening on 127.0.0.1:34203
+1655137969598	geckodriver	INFO	Listening on 127.0.0.1:37505
+1655137998991	geckodriver	INFO	Listening on 127.0.0.1:34753
+1655138014381	geckodriver	INFO	Listening on 127.0.0.1:39089
+1655138019264	geckodriver	INFO	Listening on 127.0.0.1:43379
+1655138031208	geckodriver	INFO	Listening on 127.0.0.1:36919
+1655138045495	geckodriver	INFO	Listening on 127.0.0.1:51663
+1655172908519	geckodriver	INFO	Listening on 127.0.0.1:60723
+1655172943151	geckodriver	INFO	Listening on 127.0.0.1:39799
+1655172966339	geckodriver	INFO	Listening on 127.0.0.1:36971
+1655173152376	geckodriver	INFO	Listening on 127.0.0.1:47913
+1655173217294	geckodriver	INFO	Listening on 127.0.0.1:37915
+1655173268262	geckodriver	INFO	Listening on 127.0.0.1:41853
+1655173310553	geckodriver	INFO	Listening on 127.0.0.1:60011
+1655173426235	geckodriver	INFO	Listening on 127.0.0.1:58907
+1655173515620	geckodriver	INFO	Listening on 127.0.0.1:49119
+1655173520848	geckodriver	INFO	Listening on 127.0.0.1:55835
+1655173523336	geckodriver	INFO	Listening on 127.0.0.1:48709
+1655173711662	geckodriver	INFO	Listening on 127.0.0.1:60977
+1655173720503	geckodriver	INFO	Listening on 127.0.0.1:40853
+1655173742349	geckodriver	INFO	Listening on 127.0.0.1:53891
+1655173794048	geckodriver	INFO	Listening on 127.0.0.1:60133
+1655173844487	geckodriver	INFO	Listening on 127.0.0.1:49455
+1655173860798	geckodriver	INFO	Listening on 127.0.0.1:44505
+1655174931421	geckodriver	INFO	Listening on 127.0.0.1:48209
+1655174950552	geckodriver	INFO	Listening on 127.0.0.1:54983
+1655175063610	geckodriver	INFO	Listening on 127.0.0.1:42691
+1655175276364	geckodriver	INFO	Listening on 127.0.0.1:48351
+/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox: line 5: /usr/lib/firefox/firefox: No such file or directory
+1655175297795	geckodriver	INFO	Listening on 127.0.0.1:40651
+/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox: line 5: /usr/lib/firefox/firefox: No such file or directory
+1655175389031	geckodriver	INFO	Listening on 127.0.0.1:40479
+1655175394723	geckodriver	INFO	Listening on 127.0.0.1:51171
+/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox: line 5: /usr/lib/firefox/firefox: No such file or directory
+1655175395243	mozrunner::runner	INFO	Running command: "/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox" "--marionette" "--remote-debugging-port" "42865" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/run/user/1000/app/com.jetbrains.PyCharm-Community/rust_mozprofileWQpi3e"
+/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox: line 5: /usr/lib/firefox/firefox: No such file or directory
+1655175637182	geckodriver	INFO	Listening on 127.0.0.1:43223
+/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox: line 5: /usr/lib/firefox/firefox: No such file or directory
+1655175637712	mozrunner::runner	INFO	Running command: "/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox" "--marionette" "--remote-debugging-port" "34985" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/run/user/1000/app/com.jetbrains.PyCharm-Community/rust_mozprofileM6osET"
+/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox: line 5: /usr/lib/firefox/firefox: No such file or directory
+1655175800943	geckodriver	INFO	Listening on 127.0.0.1:53293
+/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox: line 5: /usr/lib/firefox/firefox: No such file or directory
+1655175801474	mozrunner::runner	INFO	Running command: "/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox" "--marionette" "--remote-debugging-port" "32775" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/run/user/1000/app/com.jetbrains.PyCharm-Community/rust_mozprofiled4Vu7P"
+/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox: line 5: /usr/lib/firefox/firefox: No such file or directory
+1655345059809	geckodriver	INFO	Listening on 127.0.0.1:46451
+1655345097026	geckodriver	INFO	Listening on 127.0.0.1:60085
+1655345299623	geckodriver	INFO	Listening on 127.0.0.1:34015
+1655345311976	geckodriver	INFO	Listening on 127.0.0.1:58879
+1655345420756	geckodriver	INFO	Listening on 127.0.0.1:54179
+1655431410467	geckodriver	INFO	Listening on 127.0.0.1:35199
+1655432040772	geckodriver	INFO	Listening on 127.0.0.1:44445
+1655432088200	geckodriver	INFO	Listening on 127.0.0.1:44949
+1655433286042	geckodriver	INFO	Listening on 127.0.0.1:42115
+1655433818238	geckodriver	INFO	Listening on 127.0.0.1:59055
+1655433829576	geckodriver	INFO	Listening on 127.0.0.1:60895
+1655433852729	geckodriver	INFO	Listening on 127.0.0.1:32991
+1655433868761	geckodriver	INFO	Listening on 127.0.0.1:45973
+1655434191161	geckodriver	INFO	Listening on 127.0.0.1:38021
+1655434203659	geckodriver	INFO	Listening on 127.0.0.1:57257
+/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox: line 5: /usr/lib/firefox/firefox: No such file or directory
+1655434204188	mozrunner::runner	INFO	Running command: "/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox" "--marionette" "--remote-debugging-port" "52255" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/run/user/1000/app/com.jetbrains.PyCharm-Community/rust_mozprofilepCaVe2"
+/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox: line 5: /usr/lib/firefox/firefox: No such file or directory
+1655434988920	geckodriver	INFO	Listening on 127.0.0.1:59643
+1655434995455	geckodriver	INFO	Listening on 127.0.0.1:55561
+1655435008396	geckodriver	INFO	Listening on 127.0.0.1:37689
+1655435034578	geckodriver	INFO	Listening on 127.0.0.1:53131
+1655435380398	geckodriver	INFO	Listening on 127.0.0.1:49211
+1655435387534	geckodriver	INFO	Listening on 127.0.0.1:45187
+1655435394612	geckodriver	INFO	Listening on 127.0.0.1:45753
+1656095597912	geckodriver	INFO	Listening on 127.0.0.1:60067
+/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox: line 5: /usr/lib/firefox/firefox: No such file or directory
+1656095598421	mozrunner::runner	INFO	Running command: "/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox" "--marionette" "--remote-debugging-port" "33429" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/run/user/1000/app/com.jetbrains.PyCharm-Community/rust_mozprofileXwcYDC"
+/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox: line 5: /usr/lib/firefox/firefox: No such file or directory
+1656095613737	geckodriver	INFO	Listening on 127.0.0.1:45939
+/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox: line 5: /usr/lib/firefox/firefox: No such file or directory
+1656095613752	mozrunner::runner	INFO	Running command: "/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox" "--marionette" "--remote-debugging-port" "50199" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/run/user/1000/app/com.jetbrains.PyCharm-Community/rust_mozprofilesu1259"
+/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox: line 5: /usr/lib/firefox/firefox: No such file or directory
+1656095624194	geckodriver	INFO	Listening on 127.0.0.1:47733
+/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox: line 5: /usr/lib/firefox/firefox: No such file or directory
+1656095624710	mozrunner::runner	INFO	Running command: "/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox" "--marionette" "--remote-debugging-port" "52585" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/run/user/1000/app/com.jetbrains.PyCharm-Community/rust_mozprofile3L2qR4"
+/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox: line 5: /usr/lib/firefox/firefox: No such file or directory
+1656109753940	geckodriver	INFO	Listening on 127.0.0.1:46301
+/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox: line 5: /usr/lib/firefox/firefox: No such file or directory
+1656109754457	mozrunner::runner	INFO	Running command: "/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox" "--marionette" "--remote-debugging-port" "40799" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/run/user/1000/app/com.jetbrains.PyCharm-Community/rust_mozprofileHTa2Ld"
+/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox: line 5: /usr/lib/firefox/firefox: No such file or directory
+1656109813695	geckodriver	INFO	Listening on 127.0.0.1:57771
+/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox: line 5: /usr/lib/firefox/firefox: No such file or directory
+1656109814209	mozrunner::runner	INFO	Running command: "/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox" "--marionette" "--remote-debugging-port" "47109" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/run/user/1000/app/com.jetbrains.PyCharm-Community/rust_mozprofileRlZxPj"
+/home/pj/PycharmProjects/indiecinemascraper/venv/bin/firefox: line 5: /usr/lib/firefox/firefox: No such file or directory
