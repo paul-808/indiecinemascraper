@@ -26,7 +26,15 @@ def scrape_01Cineplex(cinemaID):
         print(rawMovie["title"])
         mTitle = rawMovie["title"]
         mUrl = "https://tiff.net/events"+rawMovie["url"]
-        mPosterUrl = "https:"+rawMovie["posterUrl"]
+        if 'posterUrl' in rawMovie:
+            print("has poster")
+            mPosterUrl = "https:"+rawMovie["posterUrl"]
+        elif 'img' in rawMovie:
+            print("has img")
+            mPosterUrl = "https:"+rawMovie["img"]
+        else:
+            print("no image")
+            mPosterUrl = ""
 
         for rawShowtime in rawMovie["scheduleItems"]:
             mTime = datetime.datetime.strptime(rawShowtime["startTime"], '%Y-%m-%d %H:%M:%S')
