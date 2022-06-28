@@ -1,7 +1,7 @@
 #####
 # Indie Cinema Scraper
 # v1.1
-# May 27 2022
+# May 27, 2022
 # Paul Jarvey
 ######
 
@@ -16,11 +16,7 @@ from datetime import datetime
 from pathlib import Path
 
 # link files
-from scrapers import cinescrape_01_cineplex
-from scrapers.scrapingTools import checkurl
-from scrapers.scrapingTools import requestandparse
-
-cinescrape_01_cineplex.scrape_01_cineplex(2,7130)
+from scrapers import cinescrape_01_Cineplex
 
 # Load data or init if none exists
 if not Path('listings.csv').is_file():
@@ -33,7 +29,7 @@ else:
 cinemas = pd.read_csv('cinemas.csv')
 
 
-# format URLS
+# scraping tools
 def checkurl(requested_url):
     if not urlparse(requested_url).scheme:
         requested_url = "https://" + requested_url
@@ -63,10 +59,31 @@ def requestandparse(requested_url):
     except Exception as e:
         print(e)
 
+##### Scrapers
 
 
+# scrape cineplex 1 (note needs cinema location ID values)
+listings01 = cinescrape_01_cineplex.scrape_01_cineplex(2, 7130)
+
+# todo: add remaining scrapers
+# todo: wrap scrapers in a try
+
+# list all listings results
+frames = [listings, listings01, listings01]
+print("collecting results...")
+
+# concatenate listings dataframes
+listingsOutput = pd.concat(frames)
+print("Total listings gathered: "+str(len(listingsOutput)))
+
+# remove all dates on past dates
+listingsOutput = listingsOutput[pd.to_datetime(listingsOutput['mTime']) >= pd.to_datetime("today")]
+print("Total listings in the future: "+str(len(listingsOutput)))
+
+# dedupe
+listingsOutput = pd.DataFrame.drop_duplicates(listingsOutput, subset=["cinema", "mTitle", "mTime"])
+print("Total unique future listings: "+str(len(listingsOutput)))
+
+# save as CSV
 listings.to_csv('listings.csv', index=False)
-
-
-
-
+print("Results saved.")

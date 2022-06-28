@@ -1,11 +1,11 @@
-# indie cinema scraper in ~pythonnnn~
+# Indie cinema scraper
 
 ## status
 
-- refactor code into main < scrapters format (cineplex done)
-- get additional cinemas listed. 
-- write tidy script to dump old values from the listing (pasts and duplicates)
-- add  logging
+- Add calls for remaining scrapers
+- Get additional cinemas listed.
+- Add  logging
+- Build frontend webapp
 
 Cinemas completed so far:
 - Cinesphere
