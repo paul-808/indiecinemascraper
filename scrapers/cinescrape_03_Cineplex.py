@@ -1,4 +1,4 @@
-def scrape_01_cineplex(cinemaID, locationID):
+def scrape_03_cineplex(cinemaID, locationID):
     from urllib import request
     from bs4 import BeautifulSoup
     import datetime

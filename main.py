@@ -16,7 +16,9 @@ from datetime import datetime
 from pathlib import Path
 
 # link files
-from scrapers import cinescrape_01_Cineplex
+from scrapers import cinescrape_01_Cinesphere
+from scrapers import cinescrape_02_TIFFBellLightbox
+from scrapers import cinescrape_03_Cineplex
 
 # Load data or init if none exists
 if not Path('listings.csv').is_file():
@@ -63,13 +65,16 @@ def requestandparse(requested_url):
 
 
 # scrape cineplex 1 (note needs cinema location ID values)
-listings01 = cinescrape_01_cineplex.scrape_01_cineplex(2, 7130)
+print("Beginning scrape...")
+listings01 = cinescrape_01_Cinesphere.scrape_01_cinesphere(0)
+listings02 = cinescrape_02_TIFFBellLightbox.scrape_02_cineplex(1)
+listings03 = cinescrape_03_Cineplex.scrape_03_cineplex(2, 7130)
 
 # todo: add remaining scrapers
 # todo: wrap scrapers in a try
 
 # list all listings results
-frames = [listings, listings01, listings01]
+frames = [listings, listings01, listings02, listings03]
 print("collecting results...")
 
 # concatenate listings dataframes
