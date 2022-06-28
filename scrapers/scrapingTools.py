@@ -24,7 +24,7 @@ def requestandparse(requested_url):
         opened_url = urlopen(request_obj)
         page_html = opened_url.read()
         opened_url.close()
-        page_soup = Soup(page_html, "html.parser")
+        page_soup = BeautifulSoup(page_html, "html.parser")
         return page_soup, requested_url
 
     except Exception as e:

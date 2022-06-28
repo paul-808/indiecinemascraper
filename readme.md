@@ -3,11 +3,9 @@
 ## status
 
 - refactor code into main < scrapters format (cineplex done)
-- Rewrite tiff using JSON not selenium
 - get additional cinemas listed. 
-- write tidy script to dump old values from the listing
-- write read-to and write-to master csv dataset
-- add some kind of logging
+- write tidy script to dump old values from the listing (pasts and duplicates)
+- add  logging
 
 Cinemas completed so far:
 - Cinesphere
@@ -21,7 +19,6 @@ Cinemas to do:
 - cineplex yonge-eg
 - cineplex beaches
 - cineplex store
-
 - Tiff Digital Cinema
 - Hot Docs
 - Hot Docs at Home

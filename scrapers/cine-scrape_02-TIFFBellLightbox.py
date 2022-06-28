@@ -1,5 +1,5 @@
 
-def scrape_01Cineplex(cinemaID):
+def scrape_02_cineplex(cinemaID):
     from urllib import request
     from bs4 import BeautifulSoup
     import datetime

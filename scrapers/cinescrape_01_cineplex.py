@@ -1,12 +1,9 @@
-
-def scrape_01Cineplex(cinemaID, locationID):
+def scrape_01_cineplex(cinemaID, locationID):
     from urllib import request
     from bs4 import BeautifulSoup
     import datetime
     import json
     import pandas as pd
-    # todo make sure this is actually working, not used for this cinema
-    from scrapers import scrapingTools
 
     # initiate empty data frame for local listings
     listings_local = pd.DataFrame(columns=['timestamp', 'cinema', 'mTitle', 'mTime', 'mURL', 'mPosterURL'])
@@ -14,15 +11,15 @@ def scrape_01Cineplex(cinemaID, locationID):
     # Set constants for the cinema using the listing master
     cinemas = pd.read_csv('cinemas.csv')
     mCinema = cinemas['name'][cinemaID]
-    print('attempting ' + url)
 
     # probably unnecessary df to track URLS that return listings
-    urls = pd.DataFrame(columns=['date','url'])
+    urls = pd.DataFrame(columns=['date', 'url'])
 
     # just hammer the next 30 days, because it's tricky to get the real list of available dates
     for i in range(30):
         trydate = datetime.datetime.now() + datetime.timedelta(days=i)
         url = "https://www.cineplex.com/api/v1/theatres/"+str(locationID)+"/availablemovies/showtimesoneposter?language=en-us&marketLanguageCodeFilter=false&showDate="+str(trydate.year)+"-"+'{:02d}'.format(trydate.month)+"-"+'{:02d}'.format(trydate.day)
+        print('attempting ' + url)
         html = request.urlopen(url).read()
         soup = BeautifulSoup(html, 'html.parser')
         site_json = json.loads(soup.text)
