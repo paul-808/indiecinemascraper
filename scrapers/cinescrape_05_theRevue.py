@@ -1,13 +1,10 @@
 
 def scrape_05_therevue(cinemaID):
-    from urllib.request import urlopen, Request
-    from urllib.parse import urlparse
-    from bs4 import BeautifulSoup as Soup
     import datetime
-    import json
     import re
     import pandas as pd
-    #from main import requestandparse
+    import scrapers.scrapingTools
+
 
     # initiate empty data frame for local listings
     listings_local = pd.DataFrame(columns=['timestamp', 'cinema', 'mTitle', 'mTime', 'mURL', 'mPosterURL'])
@@ -17,7 +14,7 @@ def scrape_05_therevue(cinemaID):
     mCinema = cinemas['name'][cinemaID]
     url = cinemas["listingURL"][cinemaID]
     print('attempting ' + url)
-    page, url = requestandparse(url)
+    page, url = scrapers.scrapingTools.requestandparse(url)
 
     # get films from upcoming
     rawFilmDays = page.find_all('div', class_="wpt_listing")
@@ -44,8 +41,8 @@ def scrape_05_therevue(cinemaID):
             mPosterUrl = ""
 
             mYear = datetime.datetime.today().year
-            mTime1 = datetime.datetime.strptime(str(mYear) + ' ' + str(mMonth) + ' ' + str(mDay) + ' ' + str(mHour) + ' ' + str(mMin) + ' ' + mAMPM,'%Y %B %d %I %M %p')
-            mTime2 = datetime.datetime.strptime(str(mYear+1) + ' ' + str(mMonth) + ' ' + str(mDay) + ' ' + str(mHour) + ' ' + str(mMin) + ' ' + mAMPM,'%Y %B %d %I %M %p')
+            mTime1 = datetime.datetime.strptime(str(mYear) + ' ' + str(mMonth) + ' ' + str(mDay) + ' ' + str(mHour) + ' ' + str(mMin) + ' ' + mAMPM, '%Y %B %d %I %M %p')
+            mTime2 = datetime.datetime.strptime(str(mYear+1) + ' ' + str(mMonth) + ' ' + str(mDay) + ' ' + str(mHour) + ' ' + str(mMin) + ' ' + mAMPM, '%Y %B %d %I %M %p')
 
             if mTime1 < datetime.datetime.today():
                 mTime = mTime1

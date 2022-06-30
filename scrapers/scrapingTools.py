@@ -9,6 +9,8 @@ def checkurl(requested_url):
 
 # Set agent and request date
 def requestandparse(requested_url):
+    from urllib.request import urlopen, Request
+    from bs4 import BeautifulSoup as Soup
     requested_url = checkurl(requested_url)
     try:
         # define headers to be provided for request authentication
@@ -24,7 +26,7 @@ def requestandparse(requested_url):
         opened_url = urlopen(request_obj)
         page_html = opened_url.read()
         opened_url.close()
-        page_soup = BeautifulSoup(page_html, "html.parser")
+        page_soup = Soup(page_html, "html.parser")
         return page_soup, requested_url
 
     except Exception as e:

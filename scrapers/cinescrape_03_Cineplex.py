@@ -1,6 +1,6 @@
 def scrape_03_cineplex(cinemaID, locationID):
     from urllib import request
-    from bs4 import BeautifulSoup
+    from bs4 import BeautifulSoup as Soup
     import datetime
     import json
     import pandas as pd
@@ -21,7 +21,7 @@ def scrape_03_cineplex(cinemaID, locationID):
         url = "https://www.cineplex.com/api/v1/theatres/"+str(locationID)+"/availablemovies/showtimesoneposter?language=en-us&marketLanguageCodeFilter=false&showDate="+str(trydate.year)+"-"+'{:02d}'.format(trydate.month)+"-"+'{:02d}'.format(trydate.day)
         print('attempting ' + url)
         html = request.urlopen(url).read()
-        soup = BeautifulSoup(html, 'html.parser')
+        soup = Soup(html, 'html.parser')
         site_json = json.loads(soup.text)
         if len(site_json["data"]) > 0 :
             dateChecked = [trydate]

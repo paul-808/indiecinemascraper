@@ -2,7 +2,6 @@
 def scrape_02_cineplex(cinemaID):
     from urllib import request
     from bs4 import BeautifulSoup
-    import datetime
     import json
     import pandas as pd
     import numpy as np
