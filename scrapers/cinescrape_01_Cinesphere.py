@@ -2,12 +2,12 @@
 def scrape_01_cinesphere(cinemaID):
     from urllib.request import urlopen, Request
     from urllib.parse import urlparse
-    from bs4 import BeautifulSoup
+    from bs4 import BeautifulSoup as Soup
     import datetime
     import json
     import re
     import pandas as pd
-    from main import requestandparse
+    #from main import requestandparse
 
     # initiate empty data frame for local listings
     listings_local = pd.DataFrame(columns=['timestamp', 'cinema', 'mTitle', 'mTime', 'mURL', 'mPosterURL'])
@@ -60,4 +60,5 @@ def scrape_01_cinesphere(cinemaID):
 
 
     # return the results object
+    print("Cinesphere complete, returning results....")
     return listings_local

@@ -19,6 +19,7 @@ from pathlib import Path
 from scrapers import cinescrape_01_Cinesphere
 from scrapers import cinescrape_02_TIFFBellLightbox
 from scrapers import cinescrape_03_Cineplex
+from scrapers import cinescrape_04_TIFFDigital
 
 # Load data or init if none exists
 if not Path('listings.csv').is_file():
@@ -69,6 +70,18 @@ print("Beginning scrape...")
 listings01 = cinescrape_01_Cinesphere.scrape_01_cinesphere(0)
 listings02 = cinescrape_02_TIFFBellLightbox.scrape_02_cineplex(1)
 listings03 = cinescrape_03_Cineplex.scrape_03_cineplex(2, 7130)
+listings04 = cinescrape_03_Cineplex.scrape_03_cineplex(3, 7199)
+listings05 = cinescrape_03_Cineplex.scrape_03_cineplex(4, 7400)
+listings06 = cinescrape_03_Cineplex.scrape_03_cineplex(5, 7293)
+listings07 = cinescrape_03_Cineplex.scrape_03_cineplex(6, 7139)
+listings08 = cinescrape_03_Cineplex.scrape_03_cineplex(7, 7406)
+listings09 = cinescrape_03_Cineplex.scrape_03_cineplex(8, 7298)
+listings10 = cinescrape_03_Cineplex.scrape_03_cineplex(9, 7402)
+listings11 = cinescrape_03_Cineplex.scrape_03_cineplex(10, 7115)
+listings12 = cinescrape_03_Cineplex.scrape_03_cineplex(11, 7253)
+listings13 = cinescrape_04_TIFFDigital.scrape_02_cineplex(12)
+
+
 
 # todo: add remaining scrapers
 # todo: wrap scrapers in a try

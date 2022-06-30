@@ -1,7 +1,14 @@
 # template
 
 def scrape_00(cinema_ID, cinemas):
-    # TODO check import method!!
+    from urllib.request import urlopen, Request
+    from urllib.parse import urlparse
+    from bs4 import BeautifulSoup
+    import datetime
+    import json
+    import re
+    import pandas as pd
+    from main import requestandparse
 
     listings_local = pd.DataFrame(columns=['timestamp', 'cinema', 'mTitle', 'mTime', 'mURL', 'mPosterURL'])
     listing = []
