@@ -2,7 +2,6 @@
 
 ## status
 
-- Add calls for remaining scrapers
 - Get additional cinemas listed.
 - Add  logging
 - Build frontend webapp
@@ -22,13 +21,12 @@ Cinemas completed so far:
   - Fairview Mall (7115)
   - odeon eglington town center (7253)
   - Tiff Digital Cinema 
+- The Revue
  
 Cinemas to do:
-- Hot Docs
-- Hot Docs at Home
-- The Revue
 - The Fox
 - Paradise
 - Carleton
-- Imagine Cinema Market Squr
-
+- Imagine Cinema Market Square
+- Hot Docs
+- Hot Docs at Home
