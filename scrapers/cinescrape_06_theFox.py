@@ -17,7 +17,34 @@ def scrape_06_thefox(cinemaID):
     page, url = scrapers.scrapingTools.requestandparse(url)
 
     # get films from upcoming
-    rawFilmDays = page.find_all('div', class_="wpt_listing")
+    rawFilms = page.find_all('article', class_="elementor-post")
+
+
+    for rawFilm in rawFilms:
+        mURL = rawFilm.select('a.elementor-post__thumbnail__link')[0].attrs['href']
+        mPosterUrl = rawFilm.select('a.elementor-post__thumbnail__link div img')[0].attrs['src']
+        mTitle = re.search(r"[^\-–]*", rawFilm.select('div.elementor-post__text h3')[0].text.strip()).group()
+        mPage, mURL = scrapers.scrapingTools.requestandparse(mURL)
+
+        showtimes = mPage.find_all('div', class_="elementor-shortcode")
+        nShowtimes = len(showtimes[0].select("h5"))
+
+        for x in range(nShowtimes):
+            rawFilmDay = showtimes[0].select("h5")[x]
+            mMonth = re.search("(?i)January|February|March|April|May|June|July|August|September|October|November|December", rawFilmDay.text).group()
+            mDay = re.search(r"\d+", rawFilmDay.text).group().strip()
+            rawFilmTime = showtimes[0].select("span")[x]
+
+            #broken:
+            mHour = re.search(r"\d+(?=:\d\d)", rawFilmTime[x].text).group().strip()
+            mMin = re.search(r"(?<=\d:)\d{2}", rawFilmTime[x].text).group().strip()
+            mAMPM = re.search(r"(?i)(AM|PM)", rawFilmTime[x].text).group().strip()
+
+            print(rawFilmTime, mHour, mMin, mAMPM)
+
+
+    # ********* garbage below here
+
     nrawFilmDays = len(rawFilmDays)
 
     for x in range(nrawFilmDays):
