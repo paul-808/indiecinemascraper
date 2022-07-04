@@ -44,7 +44,7 @@ def scrape_05_therevue(cinemaID):
             mTime1 = datetime.datetime.strptime(str(mYear) + ' ' + str(mMonth) + ' ' + str(mDay) + ' ' + str(mHour) + ' ' + str(mMin) + ' ' + mAMPM, '%Y %B %d %I %M %p')
             mTime2 = datetime.datetime.strptime(str(mYear+1) + ' ' + str(mMonth) + ' ' + str(mDay) + ' ' + str(mHour) + ' ' + str(mMin) + ' ' + mAMPM, '%Y %B %d %I %M %p')
 
-            if mTime1 < datetime.datetime.today():
+            if mTime1 > datetime.datetime.today():
                 mTime = mTime1
             else:
                 mTime = mTime2

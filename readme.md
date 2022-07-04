@@ -22,6 +22,7 @@ Cinemas completed so far:
   - odeon eglington town center (7253)
   - Tiff Digital Cinema 
 - The Revue
+- The fox
  
 Cinemas to do:
 - The Fox

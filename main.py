@@ -24,6 +24,7 @@ from scrapers import cinescrape_02_TIFFBellLightbox
 from scrapers import cinescrape_03_Cineplex
 from scrapers import cinescrape_04_TIFFDigital
 from scrapers import cinescrape_05_theRevue
+from scrapers import cinescrape_06_theFox
 
 # Load data or init if none exists
 if not Path('listings.csv').is_file():
@@ -35,9 +36,10 @@ else:
 
 cinemas = pd.read_csv('cinemas.csv')
 
-##### Scrapers
+# Scrapers
 
 # scrape cineplex 1 (note needs cinema location ID values)
+
 print("Beginning scrape...")
 listings01 = cinescrape_01_Cinesphere.scrape_01_cinesphere(0)
 listings02 = cinescrape_02_TIFFBellLightbox.scrape_02_cineplex(1)
@@ -53,6 +55,7 @@ listings11 = cinescrape_03_Cineplex.scrape_03_cineplex(10, 7115)
 listings12 = cinescrape_03_Cineplex.scrape_03_cineplex(11, 7253)
 listings13 = cinescrape_04_TIFFDigital.scrape_02_cineplex(12)
 listings14 = cinescrape_05_theRevue.scrape_05_therevue(13)
+listings15 = cinescrape_06_theFox.scrape_06_thefox(14)
 
 # todo: add remaining scrapers
 # todo: wrap scrapers in a try
