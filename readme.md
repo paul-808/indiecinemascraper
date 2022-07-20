@@ -1,10 +1,12 @@
 # Indie cinema scraper
 
+Scraper to aggregate listings from independent cinemas in Toronto. Designed to feed a frontend webapp.
+
 ## status
 
+Major items to work on:
 - Get additional cinemas listed.
 - Add  logging
-- Build frontend webapp
 
 Cinemas completed so far:
 - Cinesphere
@@ -25,7 +27,6 @@ Cinemas completed so far:
 - The fox
  
 Cinemas to do:
-- The Fox
 - Paradise
 - Carleton
 - Imagine Cinema Market Square

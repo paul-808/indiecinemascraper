@@ -64,7 +64,19 @@ listings15 = cinescrape_06_theFox.scrape_06_thefox(14)
 frames = [listings,
           listings01,
           listings02,
-          listings03]
+          listings03,
+          listings04,
+          listings05,
+          listings06,
+          listings07,
+          listings08,
+          listings09,
+          listings10,
+          listings11,
+          listings12,
+          listings13,
+          listings14,
+          listings15]
 print("collecting results...")
 
 # concatenate listings dataframes
@@ -80,8 +92,8 @@ listingsOutput = pd.DataFrame.drop_duplicates(listingsOutput, subset=["cinema", 
 print("Total unique future listings: "+str(len(listingsOutput)))
 
 print("Summary: ")
-listingsOutput.groupby(['cinema']).count()
+print(listingsOutput.groupby(['cinema']).count())
 
 # save as CSV
-listings.to_csv('listings.csv', index=False)
+listingsOutput.to_csv('listings.csv', index=False)
 print("Results saved.")
