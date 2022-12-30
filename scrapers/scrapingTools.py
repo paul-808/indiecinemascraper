@@ -11,6 +11,8 @@ def checkurl(requested_url):
 def requestandparse(requested_url):
     from urllib.request import urlopen, Request
     from bs4 import BeautifulSoup as Soup
+    import ssl
+    ssl._create_default_https_context = ssl._create_unverified_context
     requested_url = checkurl(requested_url)
     try:
         # define headers to be provided for request authentication

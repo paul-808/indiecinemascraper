@@ -1,4 +1,4 @@
-def scrape_03_cineplex(cinemaID, locationID):
+def scrape_03_cineplex(cinema_ID, locationID):
     from urllib import request
     from bs4 import BeautifulSoup as Soup
     import datetime
@@ -6,11 +6,11 @@ def scrape_03_cineplex(cinemaID, locationID):
     import pandas as pd
 
     # initiate empty data frame for local listings
-    listings_local = pd.DataFrame(columns=['timestamp', 'cinema', 'mTitle', 'mTime', 'mURL', 'mPosterURL'])
+    listings_local = pd.DataFrame(columns=['timestamp', 'cinema', 'cinema_ID', 'mTitle', 'mTime', 'mURL', 'mPosterURL'])
 
     # Set constants for the cinema using the listing master
     cinemas = pd.read_csv('cinemas.csv')
-    mCinema = cinemas['name'][cinemaID]
+    mCinema = cinemas['name'][cinema_ID]
 
     # probably unnecessary df to track URLS that return listings
     urls = pd.DataFrame(columns=['date', 'url'])
@@ -31,7 +31,7 @@ def scrape_03_cineplex(cinemaID, locationID):
             for rawMovie in site_json["data"]:
                 print(rawMovie["movie"]["name"])
                 mTitle = rawMovie["movie"]["name"]
-                mUrl = cinemas["listingURL"][cinemaID] # no unique movie URLs, default to cinema URL
+                mUrl = cinemas["listingURL"][cinema_ID] # no unique movie URLs, default to cinema URL
                 mPosterUrl = rawMovie["movie"]["largePosterImageUrl"] # medium and small variants available
 
                 for rawShowtime in rawMovie["showtimeDetails"][0]["showtimes"]:
@@ -42,6 +42,7 @@ def scrape_03_cineplex(cinemaID, locationID):
                     listing = []
                     listing.append(pd.to_datetime("today"))
                     listing.append(mCinema)
+                    listing.append(cinema_ID)
                     listing.append(mTitle)
                     listing.append(mTime)
                     listing.append(mUrl)

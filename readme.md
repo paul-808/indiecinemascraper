@@ -10,7 +10,7 @@ Major items to work on:
 
 Cinemas completed so far:
 - Cinesphere
-- Tiff Bell Lightbox
+- Tiff Bell Lightbox 
 - cineplexes (template script done)
   - YD (7130)
   - Varsity (7199)

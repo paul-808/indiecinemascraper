@@ -10,7 +10,7 @@ def scrape_00(cinema_ID, cinemas):
     import pandas as pd
     from main import requestandparse
 
-    listings_local = pd.DataFrame(columns=['timestamp', 'cinema', 'mTitle', 'mTime', 'mURL', 'mPosterURL'])
+    listings_local = pd.DataFrame(columns=['timestamp', 'cinema', 'cinema_ID', 'mTitle', 'mTime', 'mURL', 'mPosterURL'])
     listing = []
 
     url = cinemas["listingURL"][cinema_ID]
@@ -22,6 +22,7 @@ def scrape_00(cinema_ID, cinemas):
     # build the listing
     listing.append(pd.to_datetime("today"))
     listing.append(cinemas["name"][0])
+    listing.append(cinema_ID)
     listing.append(mTitle)
     listing.append(mTime)
     listing.append(mURL)

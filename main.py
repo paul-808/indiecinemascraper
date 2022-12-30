@@ -28,7 +28,7 @@ from scrapers import cinescrape_06_theFox
 
 # Load data or init if none exists
 if not Path('listings.csv').is_file():
-    listings = pd.DataFrame(columns=['timestamp', 'cinema', 'mTitle', 'mTime', 'mURL', 'mPosterURL'])
+    listings = pd.DataFrame(columns=['timestamp', 'cinema', 'cinema_ID', 'mTitle', 'mTime', 'mURL', 'mPosterURL'])
     print("Historical data not found, initiating new...")
 else:
     listings = pd.read_csv('listings.csv')

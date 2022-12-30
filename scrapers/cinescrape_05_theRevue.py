@@ -1,5 +1,5 @@
 
-def scrape_05_therevue(cinemaID):
+def scrape_05_therevue(cinema_ID):
     import datetime
     import re
     import pandas as pd
@@ -7,12 +7,12 @@ def scrape_05_therevue(cinemaID):
 
 
     # initiate empty data frame for local listings
-    listings_local = pd.DataFrame(columns=['timestamp', 'cinema', 'mTitle', 'mTime', 'mURL', 'mPosterURL'])
+    listings_local = pd.DataFrame(columns=['timestamp', 'cinema', 'cinema_ID', 'mTitle', 'mTime', 'mURL', 'mPosterURL'])
 
     # Set constants for the cinema using the listing master
     cinemas = pd.read_csv('cinemas.csv')
-    mCinema = cinemas['name'][cinemaID]
-    url = cinemas["listingURL"][cinemaID]
+    mCinema = cinemas['name'][cinema_ID]
+    url = cinemas["listingURL"][cinema_ID]
     print('attempting ' + url)
     page, url = scrapers.scrapingTools.requestandparse(url)
 
@@ -53,6 +53,7 @@ def scrape_05_therevue(cinemaID):
             listing = []
             listing.append(pd.to_datetime("today"))
             listing.append(mCinema)
+            listing.append(cinema_ID)
             listing.append(mTitle)
             listing.append(mTime)
             listing.append(mURL)
