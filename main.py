@@ -18,6 +18,7 @@
 import pandas as pd
 from pathlib import Path
 from dateutil import tz
+import datetime
 
 # link files
 from scrapers import cinescrape_01_Cinesphere
@@ -85,8 +86,10 @@ listingsOutput = pd.concat(frames)
 print("Total listings gathered: "+str(len(listingsOutput)))
 
 # remove all dates on past dates
-listingsOutput = listingsOutput[pd.to_datetime(listingsOutput['mTime']) >= pd.to_datetime("today")]
+listingsOutput = listingsOutput[pd.to_datetime(listingsOutput['mTime']) >= datetime.datetime.now(pytz.timezone(t_zone))]
 print("Total listings in the future: "+str(len(listingsOutput)))
+print("Past listings dropped.")
+
 
 # dedupe
 listingsOutput = pd.DataFrame.drop_duplicates(listingsOutput, subset=["cinema", "mTitle", "mTime"])
