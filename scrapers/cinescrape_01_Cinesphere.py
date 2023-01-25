@@ -4,16 +4,15 @@ def scrape_01_cinesphere(cinema_ID):
     import re
     import pandas as pd
     import scrapers.scrapingTools
-    from dateutil import tz
-     
-    #set time zone
-    t_zone = tz.gettz('America/Toronto')
+    import pytz
+
 
     # initiate empty data frame for local listings
     listings_local = pd.DataFrame(columns=['timestamp', 'cinema', 'cinema_ID', 'mTitle', 'mTime', 'mURL', 'mPosterURL'])
 
     # Set constants for the cinema using the listing master
     cinemas = pd.read_csv('cinemas.csv')
+    t_zone = cinemas['timezone'][cinema_ID]
     mCinema = cinemas['name'][cinema_ID]
     url = cinemas["listingURL"][cinema_ID]
     print('attempting ' + url)
@@ -42,14 +41,14 @@ def scrape_01_cinesphere(cinema_ID):
             mMin = re.search(r"(?<=\d:)\d\d", mTimes[i].text).group()
             mAMPM = re.search(r"(?i)(?<=\d:\d\d )(AM|PM)", mTimes[i].text).group()
             mTime = datetime.datetime.strptime(mYear + ' ' + mMonth + ' ' + mDay + ' ' + mHour + ' ' + mMin + ' ' + mAMPM,                                       '%Y %b %d %I %M %p')
-            mTime.replace(tzinfo=t_zone)
+            mTime = pytz.timezone(t_zone).localize(mTime)
             print(mTime)
 
             mURL = rawFilms[x].select('a')[0].attrs['href']
             mPosterUrl = rawFilms[x].select('img')[0].attrs['src']
 
             listing = []
-            listing.append(pd.to_datetime("today"))
+            listing.append(datetime.datetime.now(pytz.timezone(t_zone)))
             listing.append(mCinema)
             listing.append(cinema_ID)
             listing.append(mTitle)

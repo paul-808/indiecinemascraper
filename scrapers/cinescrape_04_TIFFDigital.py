@@ -1,10 +1,12 @@
 
-def scrape_02_cineplex(cinema_ID):
+def scrape_04_cineplex(cinema_ID):
     from urllib import request
     from bs4 import BeautifulSoup
     import json
+    import datetime
     import pandas as pd
     import numpy as np
+    import pytz
 
     # initiate empty data frame for local listings
     listings_local = pd.DataFrame(columns=['timestamp', 'cinema', 'cinema_ID', 'mTitle', 'mTime', 'mURL', 'mPosterURL'])
@@ -12,6 +14,7 @@ def scrape_02_cineplex(cinema_ID):
     # Set constants for the cinema using the listing master
     cinemas = pd.read_csv('cinemas.csv')
     mCinema = cinemas['name'][cinema_ID]
+    t_zone = cinemas['timezone'][cinema_ID]
     url = "https://tiff.net/filmlisttemplatejson"
     print('attempting ' + url)
 
@@ -35,7 +38,7 @@ def scrape_02_cineplex(cinema_ID):
 
         # append to listings list
         listing = []
-        listing.append(pd.to_datetime("today"))
+        listing.append(datetime.datetime.now(pytz.timezone(t_zone)))
         listing.append(mCinema)
         listing.append(cinema_ID)
         listing.append(mTitle)

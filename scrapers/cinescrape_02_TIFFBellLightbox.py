@@ -5,12 +5,15 @@ def scrape_02_cineplex(cinema_ID):
     import datetime
     import json
     import pandas as pd
+    import pytz
 
     # initiate empty data frame for local listings
     listings_local = pd.DataFrame(columns=['timestamp', 'cinema', 'cinema_ID', 'mTitle', 'mTime', 'mURL', 'mPosterURL'])
 
     # Set constants for the cinema using the listing master
+    
     cinemas = pd.read_csv('cinemas.csv')
+    t_zone = cinemas['timezone'][cinema_ID]
     mCinema = cinemas['name'][cinema_ID]
     url = "https://tiff.net/filmlisttemplatejson"
     print('attempting ' + url)
@@ -36,8 +39,8 @@ def scrape_02_cineplex(cinema_ID):
 
         for rawShowtime in rawMovie["scheduleItems"]:
             mTime = datetime.datetime.strptime(rawShowtime["startTime"], '%Y-%m-%d %H:%M:%S')
-
-            if pd.to_datetime("today") > mTime:
+            mTime =  pytz.timezone(t_zone).localize(mTime)
+            if datetime.datetime.now(pytz.timezone(t_zone)) > mTime:
                 print("skipping - date in past")
                 continue
 
@@ -45,7 +48,7 @@ def scrape_02_cineplex(cinema_ID):
 
             # append to listings list
             listing = []
-            listing.append(pd.to_datetime("today"))
+            listing.append(datetime.datetime.now(pytz.timezone(t_zone)))
             listing.append(mCinema)
             listing.append(cinema_ID)
             listing.append(mTitle)

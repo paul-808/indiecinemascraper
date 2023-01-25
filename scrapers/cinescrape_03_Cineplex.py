@@ -4,6 +4,7 @@ def scrape_03_cineplex(cinema_ID, locationID):
     import datetime
     import json
     import pandas as pd
+    import pytz
 
     # initiate empty data frame for local listings
     listings_local = pd.DataFrame(columns=['timestamp', 'cinema', 'cinema_ID', 'mTitle', 'mTime', 'mURL', 'mPosterURL'])
@@ -11,6 +12,7 @@ def scrape_03_cineplex(cinema_ID, locationID):
     # Set constants for the cinema using the listing master
     cinemas = pd.read_csv('cinemas.csv')
     mCinema = cinemas['name'][cinema_ID]
+    t_zone = cinemas['timezone'][cinema_ID]
 
     # probably unnecessary df to track URLS that return listings
     urls = pd.DataFrame(columns=['date', 'url'])
@@ -36,11 +38,12 @@ def scrape_03_cineplex(cinema_ID, locationID):
 
                 for rawShowtime in rawMovie["showtimeDetails"][0]["showtimes"]:
                     mTime = datetime.datetime.strptime(rawShowtime["showStartDateTimeUtc"], '%Y-%m-%dT%H:%M:%SZ')
+                    mTime = pytz.timezone(t_zone).localize(mTime)
                     print(mTime)
 
                     # append to listings list
                     listing = []
-                    listing.append(pd.to_datetime("today"))
+                    listing.append(datetime.datetime.now(pytz.timezone(t_zone)))
                     listing.append(mCinema)
                     listing.append(cinema_ID)
                     listing.append(mTitle)

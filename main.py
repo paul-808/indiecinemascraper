@@ -17,6 +17,7 @@
 # import modules
 import pandas as pd
 from pathlib import Path
+from dateutil import tz
 
 # link files
 from scrapers import cinescrape_01_Cinesphere
@@ -53,7 +54,7 @@ listings09 = cinescrape_03_Cineplex.scrape_03_cineplex(8, 7298)
 listings10 = cinescrape_03_Cineplex.scrape_03_cineplex(9, 7402)
 listings11 = cinescrape_03_Cineplex.scrape_03_cineplex(10, 7115)
 listings12 = cinescrape_03_Cineplex.scrape_03_cineplex(11, 7253)
-listings13 = cinescrape_04_TIFFDigital.scrape_02_cineplex(12)
+listings13 = cinescrape_04_TIFFDigital.scrape_04_cineplex(12)
 listings14 = cinescrape_05_theRevue.scrape_05_therevue(13)
 listings15 = cinescrape_06_theFox.scrape_06_thefox(14)
 
