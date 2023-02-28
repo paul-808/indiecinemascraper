@@ -34,7 +34,7 @@ def scrape_05_therevue(cinema_ID):
             mAMPM = re.search(r"(?i)(AM|PM)", rawFilm.select('div.wp_theatre_event_starttime')[0].text).group().strip()
             mTitle = re.search(r"[^-]*", rawFilm.select('div.wp_theatre_event_title a')[0].text).group().strip()
 
-            print(mTitle + ' ' + mMonth + mDay)
+            print(mTitle + ' ' + mMonth + mDay, end=' ')
             if mTitle == "Closed For Private Rental":
                 continue
 

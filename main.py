@@ -17,7 +17,7 @@
 # import modules
 import pandas as pd
 from pathlib import Path
-from dateutil import tz
+import pytz
 import datetime
 
 # link files
@@ -86,6 +86,7 @@ listingsOutput = pd.concat(frames)
 print("Total listings gathered: "+str(len(listingsOutput)))
 
 # remove all dates on past dates
+t_zone = 'America/Toronto'
 listingsOutput = listingsOutput[pd.to_datetime(listingsOutput['mTime']) >= datetime.datetime.now(pytz.timezone(t_zone))]
 print("Total listings in the future: "+str(len(listingsOutput)))
 print("Past listings dropped.")
@@ -96,7 +97,7 @@ listingsOutput = pd.DataFrame.drop_duplicates(listingsOutput, subset=["cinema", 
 print("Total unique future listings: "+str(len(listingsOutput)))
 
 print("Summary: ")
-print(listingsOutput.groupby(['cinema']).count())
+print(listingsOutput[['cinema','mTitle','mTime']].groupby(['cinema']).count())
 
 # save as CSV
 listingsOutput.to_csv('listings.csv', index=False)

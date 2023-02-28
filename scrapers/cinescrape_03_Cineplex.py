@@ -31,7 +31,7 @@ def scrape_03_cineplex(cinema_ID, locationID):
             urls.loc[len(urls)] = dateChecked
 
             for rawMovie in site_json["data"]:
-                print(rawMovie["movie"]["name"])
+                print(rawMovie["movie"]["name"], end=' ')
                 mTitle = rawMovie["movie"]["name"]
                 mUrl = cinemas["listingURL"][cinema_ID] # no unique movie URLs, default to cinema URL
                 mPosterUrl = rawMovie["movie"]["largePosterImageUrl"] # medium and small variants available

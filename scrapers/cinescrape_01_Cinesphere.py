@@ -31,7 +31,7 @@ def scrape_01_cinesphere(cinema_ID):
         # per-film collection loop
         for i in range(nmTimes):
             mTitle = rawFilms[x].select('div a')[0].attrs['title']
-            print(mTitle)
+            print(mTitle, end=' ')
 
             # regex and construct time object
             mMonth = re.search("(?i)Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec", mTimes[i].text).group()

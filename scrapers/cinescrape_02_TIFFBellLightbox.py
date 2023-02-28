@@ -24,17 +24,14 @@ def scrape_02_cineplex(cinema_ID):
     site_json = json.loads(soup.text)
 
     for rawMovie in site_json["items"]:
-        print(rawMovie["title"])
+        print(rawMovie["title"], end=' ')
         mTitle = rawMovie["title"]
         mUrl = "https://tiff.net/events"+rawMovie["url"]
         if 'posterUrl' in rawMovie:
-            print("has poster")
             mPosterUrl = "https:"+rawMovie["posterUrl"]
         elif 'img' in rawMovie:
-            print("has img")
             mPosterUrl = "https:"+rawMovie["img"]
         else:
-            print("no image")
             mPosterUrl = ""
 
         for rawShowtime in rawMovie["scheduleItems"]:
