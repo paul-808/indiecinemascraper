@@ -6,7 +6,11 @@ Scraper to aggregate listings from independent cinemas in Toronto. Designed to f
 
 Major items to work on:
 - Get additional cinemas listed.
-- Add  logging
+- Add  logging to report per-cinema results
+- improve console messages so 1 line per listing, always, and progress is evident
+- wrap components in trycatch to address error states:
+  - no listings found
+  - listing database update failure (consider not importing previously scraped data if it produces compare errors)
 
 Cinemas completed so far:
 - Cinesphere
