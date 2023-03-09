@@ -36,3 +36,7 @@ Cinemas to do:
 - Imagine Cinema Market Square
 - Hot Docs
 - Hot Docs at Home
+
+Bugs:
+- Timezone is not working correctly. Most import correctly as TZ-aware -5 Toronto but some save as -4. Unsure how this is possible or what creates this behaviour. 
+- Subsequently, they are being converted into TZ-naive values when loaded into the database, relative to the database tz. This guarantees time errors. It is possible to load as tz-aware (maybe by changing the model datatypes?)
